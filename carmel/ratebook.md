@@ -13,7 +13,7 @@ This tab defines **List Price Groups** (or **List Groups**), which combine:
 - PU and DO location types (AP, MN, OT, etc.)
 - Car Class
 
-### Pricing Setup (Tab 1
+### Pricing Setup (Tab 1)
 - This tab defines the **base price of trips** based on PU and DO Zones.
 - All further adjustments (from other tabs) are applied to this base value.
 - Use the left section to change the **Area**.

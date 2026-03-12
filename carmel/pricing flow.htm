@@ -5,604 +5,617 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ratebook Pricing Flow</title>
 <style>
-  :root{
-    --bg:#f6f8fb;
-    --card:#ffffff;
-    --ink:#1f2937;
-    --muted:#5b6472;
-    --line:#d9e0ea;
-    --blue:#1d4ed8;
-    --blue2:#dbeafe;
-    --green:#166534;
-    --green2:#dcfce7;
-    --amber:#92400e;
-    --amber2:#fef3c7;
-    --red:#991b1b;
-    --red2:#fee2e2;
-    --slate:#eef2f7;
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;
-    font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    color:var(--ink);
-    background:linear-gradient(180deg,#f8fbff 0%, #f5f7fb 100%);
-    line-height:1.5;
-  }
-  .wrap{
-    max-width:1100px;
-    margin:0 auto;
-    padding:32px 24px 56px;
-  }
-  h1,h2,h3{margin:0 0 12px}
-  h1{font-size:34px}
-  h2{font-size:24px; margin-top:28px}
-  h3{font-size:18px; margin-top:18px}
-  p{margin:10px 0}
-  .lead{
-    font-size:17px;
-    color:var(--muted);
-    max-width:900px;
-  }
-  .card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:18px;
-    padding:22px 22px;
-    box-shadow:0 10px 30px rgba(15,23,42,.06);
-    margin-top:18px;
-  }
-  .formula{
-    background:#0f172a;
-    color:#fff;
-    padding:18px 20px;
-    border-radius:16px;
-    font-size:15px;
-    font-weight:600;
-    overflow:auto;
-  }
-  .formula .muted{color:#cbaae1;font-weight:500}
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(12,1fr);
-    gap:16px;
-  }
-  .span-6{grid-column:span 6}
-  .span-4{grid-column:span 4}
-  .span-3{grid-column:span 3}
-  .span-12{grid-column:span 12}
-  @media (max-width:900px){
-    .span-6,.span-4,.span-3{grid-column:span 12}
-  }
-  .pill{
-    display:inline-block;
-    padding:4px 10px;
-    border-radius:999px;
-    font-size:12px;
-    font-weight:700;
-    letter-spacing:.03em;
-    text-transform:uppercase;
-    margin-bottom:10px;
-  }
-  .blue{background:var(--blue2); color:var(--blue)}
-  .green{background:var(--green2); color:var(--green)}
-  .amber{background:var(--amber2); color:var(--amber)}
-  .red{background:var(--red2); color:var(--red)}
-  .flow{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
-    margin-top:18px;
-  }
-  @media (max-width:1000px){ .flow{grid-template-columns:1fr 1fr} }
-  @media (max-width:650px){ .flow{grid-template-columns:1fr} }
-  .step{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:18px;
-    padding:18px;
-    position:relative;
-    box-shadow:0 10px 24px rgba(15,23,42,.05);
-  }
-  .step-num{
-    width:34px;height:34px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    background:#111827;color:#fff;font-weight:700;margin-bottom:12px;
-  }
-  .step p{color:var(--muted)}
-  .callout{
-    border-left:5px solid var(--blue);
-    background:#eff6ff;
-    padding:14px 16px;
-    border-radius:12px;
-    margin:14px 0;
-  }
-  .warn{
-    border-left-color:var(--amber);
-    background:#fff7ed;
-  }
-  .danger{
-    border-left-color:var(--red);
-    background:#fef2f2;
-  }
-  table{
-    width:100%;
-    border-collapse:separate;
-    border-spacing:0;
-    overflow:hidden;
-    border:1px solid var(--line);
-    border-radius:14px;
-    margin-top:10px;
-    background:#fff;
-  }
-  th,td{
-    padding:12px 14px;
-    border-bottom:1px solid #e8edf4;
-    vertical-align:top;
-    text-align:left;
-  }
-  th{
-    background:#f8fafc;
-    font-size:13px;
-    text-transform:uppercase;
-    letter-spacing:.03em;
-    color:#475569;
-  }
-  tr:last-child td{border-bottom:none}
-  code{
-    background:#eef2ff;
-    padding:2px 7px;
-    border-radius:8px;
-    font-family:Consolas, monospace;
-    font-size:.95em;
-  }
-  .small{font-size:14px;color:var(--muted)}
-  ul{margin:8px 0 0 20px}
-  li{margin:6px 0}
-  .term{
-    display:inline-block;
-    padding:6px 10px;
-    border-radius:10px;
-    background:var(--slate);
-    margin:0 8px 8px 0;
-    font-size:14px;
-  }
-  .footer{
-    margin-top:28px;
-    color:var(--muted);
-    font-size:14px;
-  }
+	:root{
+		--bg:#f6f8fb;
+		--card:#ffffff;
+		--ink:#1f2937;
+		--muted:#5b6472;
+		--line:#d9e0ea;
+		--blue:#1d4ed8;
+		--blue2:#dbeafe;
+		--green:#166534;
+		--green2:#dcfce7;
+		--amber:#92400e;
+		--amber2:#fef3c7;
+		--red:#991b1b;
+		--red2:#fee2e2;
+		--slate:#eef2f7;
+	}
+	*{box-sizing:border-box}
+	body{
+		margin:0;
+		font-family: "Segoe UI", Roboto, Arial, sans-serif;
+		color:var(--ink);
+		background:linear-gradient(180deg,#f8fbff 0%, #f5f7fb 100%);
+		line-height:1.5;
+	}
+	.wrap{
+		max-width:1100px;
+		margin:0 auto;
+		padding:32px 24px 56px;
+	}
+	h1,h2,h3{margin:0 0 12px}
+	h1{font-size:34px}
+	h2{font-size:24px; margin-top:28px}
+	h3{font-size:18px; margin-top:18px}
+	p{margin:10px 0}
+	.lead{
+		font-size:17px;
+		color:var(--muted);
+		max-width:900px;
+	}
+	.card{
+		background:var(--card);
+		border:1px solid var(--line);
+		border-radius:18px;
+		padding:22px 22px;
+		box-shadow:0 10px 30px rgba(15,23,42,.06);
+		margin-top:18px;
+	}
+	.formula{
+		background:#0f172a;
+		color:#fff;
+		padding:18px 20px;
+		border-radius:16px;
+		font-size:15px;
+		font-weight:600;
+		overflow:auto;
+	}
+	.formula .muted{color:#cbaae1;font-weight:500}
+	.grid{
+		display:grid;
+		grid-template-columns:repeat(12,1fr);
+		gap:16px;
+	}
+	.span-6{grid-column:span 6}
+	.span-4{grid-column:span 4}
+	.span-3{grid-column:span 3}
+	.span-12{grid-column:span 12}
+	@media (max-width:900px){
+		.span-6,.span-4,.span-3{grid-column:span 12}
+	}
+	.pill{
+		display:inline-block;
+		padding:4px 10px;
+		border-radius:999px;
+		font-size:12px;
+		font-weight:700;
+		letter-spacing:.03em;
+		text-transform:uppercase;
+		margin-bottom:10px;
+	}
+	.blue{background:var(--blue2); color:var(--blue)}
+	.green{background:var(--green2); color:var(--green)}
+	.amber{background:var(--amber2); color:var(--amber)}
+	.red{background:var(--red2); color:var(--red)}
+	.flow{
+		display:grid;
+		grid-template-columns:repeat(3,1fr);
+		gap:16px;
+		margin-top:18px;
+	}
+	@media (max-width:1000px){ .flow{grid-template-columns:1fr 1fr} }
+	@media (max-width:650px){ .flow{grid-template-columns:1fr} }
+	.step{
+		background:var(--card);
+		border:1px solid var(--line);
+		border-radius:18px;
+		padding:18px;
+		position:relative;
+		box-shadow:0 10px 24px rgba(15,23,42,.05);
+	}
+	.step-num{
+		width:34px;height:34px;border-radius:50%;
+		display:flex;align-items:center;justify-content:center;
+		background:#111827;color:#fff;font-weight:700;margin-bottom:12px;
+	}
+	.step p{color:var(--muted)}
+	.callout{
+		border-left:5px solid var(--blue);
+		background:#eff6ff;
+		padding:14px 16px;
+		border-radius:12px;
+		margin:14px 0;
+	}
+	.warn{
+		border-left-color:var(--amber);
+		background:#fff7ed;
+	}
+	.danger{
+		border-left-color:var(--red);
+		background:#fef2f2;
+	}
+	table{
+		width:100%;
+		border-collapse:separate;
+		border-spacing:0;
+		overflow:hidden;
+		border:1px solid var(--line);
+		border-radius:14px;
+		margin-top:10px;
+		background:#fff;
+	}
+	th,td{
+		padding:12px 14px;
+		border-bottom:1px solid #e8edf4;
+		vertical-align:top;
+		text-align:left;
+	}
+	th{
+		background:#f8fafc;
+		font-size:13px;
+		text-transform:uppercase;
+		letter-spacing:.03em;
+		color:#475569;
+	}
+	tr:last-child td{border-bottom:none}
+	code{
+		background:#eef2ff;
+		padding:2px 7px;
+		border-radius:8px;
+		font-family:Consolas, monospace;
+		font-size:.95em;
+	}
+	.small{font-size:14px;color:var(--muted)}
+	ul{margin:8px 0 0 20px}
+	li{margin:6px 0}
+	.term{
+		display:inline-block;
+		padding:6px 10px;
+		border-radius:10px;
+		background:var(--slate);
+		margin:0 8px 8px 0;
+		font-size:14px;
+	}
+	.footer{
+		margin-top:28px;
+		color:var(--muted);
+		font-size:14px;
+	}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>Ratebook Pricing Flow</h1>
-  <p class="lead">
-    The pricing flow works in layers:
-    start from the base zone-to-zone list price, then apply class-based adjustments, then add time-based adjustments when applicable.
-  </p>
+	<h1>Ratebook Pricing Flow</h1>
+	<p class="lead">
+		The pricing flow works in layers:
+		start from the base zone-to-zone list price, then apply class-based adjustments, then add time-based adjustments when applicable.
+	</p>
 
-  <div class="card">
-    <span class="pill blue">Core formula</span>
-    <div class="formula">
-      Final Price =
-      <span class="muted">List Price</span>
-      + <span>List Price Adj</span>
-      + <span class="muted">Base Price</span>
-      + <span>Base Price LOC Adj</span>
-      + <span class="muted">Base Price Time Adj</span>
-      + <span>Base Price Time Lvl Adj</span>
-    </div>
-  </div>
+	<div class="card">
+		<span class="pill blue">Core formula</span>
+		<div class="formula">
+			Final Price =
+			<span class="muted">List Price</span>
+			+ <span>List Price Adj</span>
+			+ <span class="muted">Base Price</span>
+			+ <span>Base Price LOC Adj</span>
+			+ <span class="muted">Base Price Time Adj</span>
+			+ <span>Base Price Time Lvl Adj</span>
+		</div>
+	</div>
 
-  <h2>Pricing flow at a glance</h2>
-  <div class="flow">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>List Price</h3>
-      <p>The starting price. It is based on the <strong>PU Zone</strong> and <strong>DO Zone</strong>.</p>
-      <code class="small">Step 1: List Price</code><br>
-      <code class="small">Step 2: List Price Adj</code>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Base Price</h3>
-      <p>Adjust the price based on the <strong>Car Class</strong>, whether it's one-way or round trip, and for specific long-distance trips.</p>
-      <code class="small">Step 3: Base Price</code><br>
-      <code class="small">Step 4: Base Price LOC Adj</code>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Time Slices</h3>
-      <p>Adjust the price based on <strong>Time Slices</strong> defined in Ratebook→Time Slice.</p>
-      <code class="small">Step 5: Base Price Time Adj</code><br>
-      <code class="small">Step 6: Base Price Time Lvl Adj</code>
-    </div>
-  </div>
+	<h2>Pricing flow at a glance</h2>
+	<div class="flow">
+		<div class="step">
+			<div class="step-num">1</div>
+			<h3>List Price</h3>
+			<p>The starting price. It is based on the <strong>PU Zone</strong> and <strong>DO Zone</strong>.</p>
+			<code class="small">Step 1: List Price</code><br>
+			<code class="small">Step 2: List Price Adj</code>
+		</div>
+		<div class="step">
+			<div class="step-num">2</div>
+			<h3>Base Price</h3>
+			<p>Adjust the price based on the <strong>Car Class</strong>, whether it's one-way or round trip, and for specific long-distance trips.</p>
+			<code class="small">Step 3: Base Price</code><br>
+			<code class="small">Step 4: Base Price LOC Adj</code>
+		</div>
+		<div class="step">
+			<div class="step-num">3</div>
+			<h3>Time Slices</h3>
+			<p>Adjust the price based on <strong>Time Slices</strong> defined in Ratebook→Time Slice.</p>
+			<code class="small">Step 5: Base Price Time Adj</code><br>
+			<code class="small">Step 6: Base Price Time Lvl Adj</code>
+		</div>
+	</div>
 
-  <h2>Step-by-step explanation</h2>
+	<h2>Step-by-step explanation</h2>
 
-  <div class="card">
-    <span class="pill blue">Step 1</span>
-    <h3>List Price</h3>
-    <p>
-      The <strong>List Price</strong> is the starting price. It is based on the <strong>Car Class</strong>  'SD', the <strong>PU Zone</strong>, and the <strong>DO Zone</strong>.
-    </p>
-    <table>
-      <thead>
-        <tr>
-          <th>zone 1 area</th>
-          <th>zone 1 name</th>
-          <th>zone 2 area</th>
-          <th>zone 2 name</th>
-          <th>list price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>M</td>
-          <td>M0</td>
-          <td>M</td>
-          <td>M0</td>
-          <td>17</td>
-        </tr>
-        <tr>
-          <td>M</td>
-          <td>M0</td>
-          <td>M</td>
-          <td>M2</td>
-          <td>17</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="callout warn">
-      <strong>⇋ Bi-Directional</strong>, unless a specific alternative rule exists.
-    </div>
-  </div>
-  
-    <div class="card">
-    <span class="pill blue">Step 2</span>
-    <h3>List Price Adjust</h3>
-    <div class="callout">
-      Does not apply to <strong>M→M</strong>.
-    </div>
-    <p>
-     Adjusts the price on specific <strong>Zones</strong> depending on <strong>PU</strong> and <strong>DO</strong> location.</p>
+	<div class="card">
+		<span class="pill blue">Step 1</span>
+		<h3>List Price</h3>
+		<p>
+			The <strong>List Price</strong> is the starting price. It is based on the <strong>Car Class</strong>	'SD', the <strong>PU Zone</strong>, and the <strong>DO Zone</strong>.
+		</p>
+		<table>
+			<thead>
+				<tr>
+					<th>zone 1 area</th>
+					<th>zone 1 name</th>
+					<th>zone 2 area</th>
+					<th>zone 2 name</th>
+					<th>list price</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>M</td>
+					<td>M0</td>
+					<td>M</td>
+					<td>M0</td>
+					<td>17</td>
+				</tr>
+				<tr>
+					<td>M</td>
+					<td>M0</td>
+					<td>M</td>
+					<td>M2</td>
+					<td>17</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="callout warn">
+			<strong>⇋ Bi-Directional</strong>, unless a specific alternative rule exists.
+		</div>
+	</div>
+	
+		<div class="card">
+		<span class="pill blue">Step 2</span>
+		<h3>List Price Adjust</h3>
+		<div class="callout">
+			Does not apply to <strong>M→M</strong>.
+		</div>
+		<p>
+		 Adjusts the price on specific <strong>Zones</strong> depending on <strong>PU</strong> and <strong>DO</strong> location.</p>
 
-    <table>
-      <thead>
-        <tr>
-          <th>zone 1 area</th>
-          <th>zone 1 name</th>
-          <th>zone 2 area</th>
-          <th>zone 2 name</th>
-          <th>list price adjust</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>SI</td>
-          <td>SI</td>
-          <td>M</td>
-          <td>M3</td>
-          <td>2</td>
-        </tr>
-        <tr>
-          <td>SI</td>
-          <td>SI</td>
-          <td>M</td>
-          <td>M4</td>
-          <td>3</td>
-        </tr>
-        <tr>
-          <td>M</td>
-          <td>M0</td>
-          <td>BX</td>
-          <td>BX</td>
-          <td>10</td>
-        </tr>
-        <tr>
-          <td>M</td>
-          <td>M2</td>
-          <td>BX</td>
-          <td>BX</td>
-          <td>9</td>
-        </tr>
-      </tbody>
-    </table>
-          <p>
+		<table>
+			<thead>
+				<tr>
+					<th>zone 1 area</th>
+					<th>zone 1 name</th>
+					<th>zone 2 area</th>
+					<th>zone 2 name</th>
+					<th>list price adjust</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>SI</td>
+					<td>SI</td>
+					<td>M</td>
+					<td>M3</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>SI</td>
+					<td>SI</td>
+					<td>M</td>
+					<td>M4</td>
+					<td>3</td>
+				</tr>
+				<tr>
+					<td>M</td>
+					<td>M0</td>
+					<td>BX</td>
+					<td>BX</td>
+					<td>10</td>
+				</tr>
+				<tr>
+					<td>M</td>
+					<td>M2</td>
+					<td>BX</td>
+					<td>BX</td>
+					<td>9</td>
+				</tr>
+			</tbody>
+		</table>
+					<p>
 <em>Example:</em> Trips from <strong>BX to Downtown Manhattan</strong> require an additional charge compared to <strong>BX to Upper Manhattan</strong>, and the same adjustment applies in the reverse direction.
-    </p>
-    <div class="callout warn">
-      <strong>⇒ Directional</strong>. If the reverse direction is not defined, the adjustment defaults to <strong>0</strong>.
-    </div>
-  </div>
+		</p>
+		<div class="callout warn">
+			<strong>⇒ Directional</strong>. If the reverse direction is not defined, the adjustment defaults to <strong>0</strong>.
+		</div>
+	</div>
 
-  <div class="card">
-    <span class="pill blue">Step 3</span>
-    <h3>Base Price</h3>
-    <p>
-      Adjusts the price based on the <strong>Car Class</strong> and wether the trip is one-way or round-trip.
-    </p>
-        <table>
-      <thead>
-        <tr>
-          <th>car class</th>
-          <th>adjust factor</th>
-          <th>adjust amt</th>
-          <th>rt adjust factor</th>
-          <th>rt adjust amt</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>DX</td>
-          <td>1</td>
-          <td>8</td>
-          <td>2</td>
-          <td>12</td>
-        </tr>
-        <tr>
-          <td>SD</td>
-          <td>1</td>
-          <td></td>
-          <td>2</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>SX</td>
-          <td>2</td>
-          <td>12</td>
-          <td>4</td>
-          <td>24</td>
-        </tr>
-        <tr>
-          <td>VN</td>
-          <td>2</td>
-          <td></td>
-          <td>4</td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-    <p><strong>Pricing behavior:</strong></p>
-    <ul>
-      <li><strong>One-way:</strong> <code>List Price × Adjust Factor + Adjust Amt</code></li>
-      <li><strong>Round trip:</strong> <code>List Price × Rt Adjust Factor + Rt Adjust Amt</code></li>
-    </ul>
-    <div class="callout warn">
-      <strong>⇋ Bi-Directional</strong>, unless a specific alternative rule exists.
-    </div>
-  </div>
+	<div class="card">
+		<span class="pill blue">Step 3</span>
+		<h3>Base Price</h3>
+		<p>
+			Adjusts the price based on the <strong>Car Class</strong> and wether the trip is one-way or round-trip.
+		</p>
+				<table>
+			<thead>
+				<tr>
+					<th>pu loc</th>
+					<th>do loc</th>
+					<th>car class</th>
+					<th>adjust factor</th>
+					<th>adjust amt</th>
+					<th>rt adjust factor</th>
+					<th>rt adjust amt</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>BO</td>
+					<td>AP</td>
+					<td>DX</td>
+					<td>1</td>
+					<td>8</td>
+					<td>2</td>
+					<td>12</td>
+				</tr>
+				<tr>
+					<td>BO</td>
+					<td>AP</td>
+					<td>SD</td>
+					<td>1</td>
+					<td></td>
+					<td>2</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>BO</td>
+					<td>AP</td>
+					<td>SX</td>
+					<td>2</td>
+					<td>12</td>
+					<td>4</td>
+					<td>24</td>
+				</tr>
+				<tr>
+					<td>BO</td>
+					<td>AP</td>
+					<td>VN</td>
+					<td>2</td>
+					<td></td>
+					<td>4</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<p><strong>Pricing behavior:</strong></p>
+		<ul>
+			<li><strong>One-way:</strong> <code>List Price × Adjust Factor + Adjust Amt</code></li>
+			<li><strong>Round trip:</strong> <code>List Price × Rt Adjust Factor + Rt Adjust Amt</code></li>
+		</ul>
+		<div class="callout warn">
+			<strong>⇋ Bi-Directional</strong>, unless a specific alternative rule exists.
+		</div>
+	</div>
 
-  <div class="card">
-    <span class="pill blue">Step 4</span>
-    <h3>Base Price LOC Adjust</h3>
-    <p>
-      Adjusts the prices based on longer distance trips within specific <strong>Zones</strong>.
-    </p>
-    <table>
-      <thead>
-        <tr>
-          <th>zone 1 name</th>
-          <th>zone 2 name</th>
-          <th>car class</th>
-          <th>adjust factor</th>
-          <th>adjust amt</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>SI</td>
-          <td>BO</td>
-          <td>LX</td>
-          <td>1</td>
-          <td>10</td>
-        </tr>
-        <tr>
-          <td>BK</td>
-          <td>OT</td>
-          <td>DX</td>
-          <td>1</td>
-          <td>5</td>
-        </tr>
-        <tr>
-          <td>BX</td>
-          <td>M</td>
-          <td>DX</td>
-          <td>1</td>
-          <td>6</td>
-        </tr>
-        <tr>
-          <td>QU</td>
-          <td>QURK</td>
-          <td>DX</td>
-          <td>1</td>
-          <td>5</td>
-        </tr>
-      </tbody>
-    </table>
-    <p class="small">QURK = Far away Rockaway</p>
-    <div class="callout warn">
-      <strong>⇒ Directional</strong>. If the reverse direction is not defined, the adjustment defaults to <strong>0</strong>.
-    </div>
-  </div>
+	<div class="card">
+		<span class="pill blue">Step 4</span>
+		<h3>Base Price LOC Adjust</h3>
+		<p>
+			Adjusts the prices based on longer distance trips within specific <strong>Zones</strong>.
+		</p>
+		<div class="callout">
+			Does not apply to <strong>Local Trips</strong>.
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>zone 1 name</th>
+					<th>zone 2 name</th>
+					<th>car class</th>
+					<th>adjust factor</th>
+					<th>adjust amt</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>SI</td>
+					<td>BO</td>
+					<td>LX</td>
+					<td>1</td>
+					<td>10</td>
+				</tr>
+				<tr>
+					<td>BK</td>
+					<td>OT</td>
+					<td>DX</td>
+					<td>1</td>
+					<td>5</td>
+				</tr>
+				<tr>
+					<td>BX</td>
+					<td>M</td>
+					<td>DX</td>
+					<td>1</td>
+					<td>6</td>
+				</tr>
+				<tr>
+					<td>QU</td>
+					<td>QURK</td>
+					<td>DX</td>
+					<td>1</td>
+					<td>5</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="small">QURK = Far away Rockaway</p>
+		<div class="callout warn">
+			<strong>⇒ Directional</strong>. If the reverse direction is not defined, the adjustment defaults to <strong>0</strong>.
+		</div>
+	</div>
 
 
-    <div class="card">
-    <span class="pill blue">Step 5</span>
-    <h3>Base Price Time Adj</h3>
-    <p>
-      Adjusts  pricing when a trip falls into unique/special <strong>Time Slices</strong>.
-    </p>
-    <table>
-      <thead>
-        <tr>
-          <th>pu loc</th>
-          <th>do loc</th>
-          <th>car class</th>
-          <th>time slice</th>
-          <th>adjust factor</th>
-          <th>adjust amt</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>MN</td>
-          <td>BO</td>
-          <td>LX</td>
-          <td>AM Rush From NYC</td>
-          <td>1</td>
-          <td>2</td>
-        </tr>
-        <tr>
-          <td>MN</td>
-          <td>BO</td>
-          <td>SD</td>
-          <td>CHRISTMAS AM</td>
-          <td>1</td>
-          <td>5</td>
-        </tr>
-        <tr>
-          <td>MN</td>
-          <td>BO</td>
-          <td>SV</td>
-          <td>THANKSGIVING PM</td>
-          <td>1</td>
-          <td>10</td>
-        </tr>
-      </tbody>
-    </table>
-    <p>
-      These settings are found under <code>Settings > Dispatch Settings > Time Slice Setup</code>
-    </p>
-    <div class="callout warn">
-      <strong>⇒ Directional</strong>. If the reverse direction is not defined, the adjustment defaults to <strong>0</strong>.
-    </div>
-  </div>
+		<div class="card">
+		<span class="pill blue">Step 5</span>
+		<h3>Base Price Time Adj</h3>
+		<p>
+			Adjusts	pricing when a trip falls into unique/special <strong>Time Slices</strong>.
+		</p>
+		<table>
+			<thead>
+				<tr>
+					<th>pu loc</th>
+					<th>do loc</th>
+					<th>car class</th>
+					<th>time slice</th>
+					<th>adjust factor</th>
+					<th>adjust amt</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>MN</td>
+					<td>BO</td>
+					<td>LX</td>
+					<td>AM Rush From NYC</td>
+					<td>1</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>MN</td>
+					<td>BO</td>
+					<td>SD</td>
+					<td>CHRISTMAS AM</td>
+					<td>1</td>
+					<td>5</td>
+				</tr>
+				<tr>
+					<td>MN</td>
+					<td>BO</td>
+					<td>SV</td>
+					<td>THANKSGIVING PM</td>
+					<td>1</td>
+					<td>10</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>
+			These settings are found under <code>Settings > Dispatch Settings > Time Slice Setup</code>
+		</p>
+		<div class="callout warn">
+			<strong>⇒ Directional</strong>. If the reverse direction is not defined, the adjustment defaults to <strong>0</strong>.
+		</div>
+	</div>
 
 <div class="card">
-    <span class="pill blue">Step 6</span>
-    <h3>Base Price Time Lvl Adj</h3>
-    <p>
-        Adjusts the price based on certain <strong>Time Slices</strong> within specific <strong>Zones</strong>.
-    </p>
-    <div class="callout">
-        <strong>Time Slices</strong> are defined in <code>Ratebook > Time Slice Setup</code>
-    </div>
-    <div class="callout warn">
-      <strong>⇒ Directional</strong>. If the reverse direction is not defined, the adjustment defaults to <strong>0</strong>.
-    </div>
+		<span class="pill blue">Step 6</span>
+		<h3>Base Price Time Lvl Adj</h3>
+		<p>
+				Adjusts the price based on certain <strong>Time Slices</strong> within specific <strong>Zones</strong>.
+		</p>
+		<div class="callout">
+				<strong>Time Slices</strong> are defined in <code>Ratebook > Time Slice Setup</code>
+		</div>
+		<div class="callout warn">
+			<strong>⇒ Directional</strong>. If the reverse direction is not defined, the adjustment defaults to <strong>0</strong>.
+		</div>
 
-    
-    <div class="card">
-        <h3>All Borroughs</h3>
-        <p>
-            Adjusts the price according to the <strong>Time Slice Level</strong> amount.
-        </p>
-        <p>
-            Defined in <strong>Peak (Rush) Adjustments</strong> under <code>Settings > Dispatch Settings</code>
-        </p>
-        
-        <table>
-          <thead>
-            <tr>
-              <th>zone 1 name</th>
-              <th>zone 2 name</th>
-              <th>car class</th>
-              <th>time slice</th>
-              <th>time slice level</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-                <td>BO</td>
-                <td>BO</td>
-                <td>DX</td>
-                <td>PEAK MORNING BORO</td>
-                <td>C</td>
-            </tr>
-            <tr>
-                <td>BO</td>
-                <td>OT</td>
-                <td>DX</td>
-                <td>PEAK MORNING BORO</td>
-                <td>C</td>
-            </tr>
-            <tr>
-                <td>M</td>
-                <td>BO</td>
-                <td>VN</td>
-                <td>Afternoon Peak</td>
-                <td>L</td>
-            </tr>
-            <tr>
-                <td>EWR</td>
-                <td>BO</td>
-                <td>DX</td>
-                <td>PEAK MORNING EWR</td>
-                <td>C</td>
-            </tr>
-          </tbody>
-        </table>
-    </div>
+		
+		<div class="card">
+				<h3>All Borroughs</h3>
+				<p>
+						Adjusts the price according to the <strong>Time Slice Level</strong> amount.
+				</p>
+				<p>
+						Defined in <strong>Peak (Rush) Adjustments</strong> under <code>Settings > Dispatch Settings</code>
+				</p>
+				
+				<table>
+					<thead>
+						<tr>
+							<th>zone 1 name</th>
+							<th>zone 2 name</th>
+							<th>car class</th>
+							<th>time slice</th>
+							<th>time slice level</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td>BO</td>
+								<td>BO</td>
+								<td>DX</td>
+								<td>PEAK MORNING BORO</td>
+								<td>C</td>
+						</tr>
+						<tr>
+								<td>BO</td>
+								<td>OT</td>
+								<td>DX</td>
+								<td>PEAK MORNING BORO</td>
+								<td>C</td>
+						</tr>
+						<tr>
+								<td>M</td>
+								<td>BO</td>
+								<td>VN</td>
+								<td>Afternoon Peak</td>
+								<td>L</td>
+						</tr>
+						<tr>
+								<td>EWR</td>
+								<td>BO</td>
+								<td>DX</td>
+								<td>PEAK MORNING EWR</td>
+								<td>C</td>
+						</tr>
+					</tbody>
+				</table>
+		</div>
 
-    
-    <div class="card">
-        <h3>Local</h3>
-        <p>
-            Defined in <strong>Local (Non Rush) Special</strong> under <code>Settings > Dispatch Settings</code>
-        </p>
-        <p>
-            Applies to the <strong>Car Classes</strong> 
-            <code>SD</code>
-            <code>SO</code>
-            <code>LX</code>
-            <code>DS</code>
-        </p>
-        
-        <table>
-          <thead>
-            <tr>
-              <th>zone 1 name</th>
-              <th>zone 2 name</th>
-              <th>car class</th>
-              <th>time slice</th>
-              <th>adjust factor</th>
-              <th>adjust amt</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-                <td>M</td>
-                <td>M</td>
-                <td>DX</td>
-                <td>AM LOCALS SPECIAL</td>
-                <td>1</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>M</td>
-                <td>M</td>
-                <td>SO</td>
-                <td>AM LOCALS SPECIAL</td>
-                <td>1</td>
-                <td>3</td>
-            </tr>
+		
+		<div class="card">
+				<h3>Local</h3>
+				<p>
+						Defined in <strong>Local (Non Rush) Special</strong> under <code>Settings > Dispatch Settings</code>
+				</p>
+				<p>
+						Applies to the <strong>Car Classes</strong> 
+						<code>SD</code>
+						<code>SO</code>
+						<code>LX</code>
+						<code>DS</code>
+				</p>
+				
+				<table>
+					<thead>
+						<tr>
+							<th>zone 1 name</th>
+							<th>zone 2 name</th>
+							<th>car class</th>
+							<th>time slice</th>
+							<th>adjust factor</th>
+							<th>adjust amt</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td>M</td>
+								<td>M</td>
+								<td>DX</td>
+								<td>AM LOCALS SPECIAL</td>
+								<td>1</td>
+								<td>3</td>
+						</tr>
+						<tr>
+								<td>M</td>
+								<td>M</td>
+								<td>SO</td>
+								<td>AM LOCALS SPECIAL</td>
+								<td>1</td>
+								<td>3</td>
+						</tr>
 
-          </tbody>
-        </table>
-        
-        <div class="callout warn">
-          <strong>Peak Codes</strong> (N, L, H, C, K) do <strong>NOT</strong> apply to locals.
-        </div>
-    </div>
-    
+					</tbody>
+				</table>
+				
+				<div class="callout warn">
+					<strong>Peak Codes</strong> (N, L, H, C, K) do <strong>NOT</strong> apply to locals.
+				</div>
+		</div>
+		
 </div>
 
-  <div class="footer">
-    v1
-  </div>
+	<div class="footer">
+		v1
+	</div>
 </div>
 </body>
 </html>

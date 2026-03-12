@@ -207,7 +207,7 @@
     <div class="step">
       <div class="step-num">2</div>
       <h3>Base Price</h3>
-      <p>Adjust the price based on the <strong>Car Class</strong> and whether the trip is one-way or round trip.</p>
+      <p>Adjust the price based on the <strong>Car Class</strong>, whether it's one-way or round trip, and for specific long-distance trips.</p>
       <code class="small">Step 3: Base Price</code><br>
       <code class="small">Step 4: Base Price LOC Adj</code>
     </div>
@@ -267,7 +267,7 @@
       Does not apply to <strong>M→M</strong>.
     </div>
     <p>
-      Adds an amount for specific zones depending on the pick-up (PU) and drop-off (DO) location.</p>
+     Adjusts the price on specific <strong>Zones</strong> depending on <strong>PU</strong> and <strong>DO</strong> location.</p>
 
     <table>
       <thead>
@@ -381,48 +381,42 @@
     <p>
       Adjusts the prices based on longer distance trips within specific <strong>Zones</strong>.
     </p>
-    <strong>Affected Zones: </strong>
-    <code>M</code>
-    <code>SI</code>
-    <code>BK</code>
-    <code>BX</code>
-    <code>QURK</code>
     <table>
       <thead>
         <tr>
-          <th>car class</th>
           <th>zone 1 name</th>
           <th>zone 2 name</th>
+          <th>car class</th>
           <th>adjust factor</th>
           <th>adjust amt</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>LX</td>
           <td>SI</td>
           <td>BO</td>
+          <td>LX</td>
           <td>1</td>
           <td>10</td>
         </tr>
         <tr>
-          <td>DX</td>
           <td>BK</td>
           <td>OT</td>
+          <td>DX</td>
           <td>1</td>
           <td>5</td>
         </tr>
         <tr>
-          <td>DX</td>
           <td>BX</td>
           <td>M</td>
+          <td>DX</td>
           <td>1</td>
           <td>6</td>
         </tr>
         <tr>
-          <td>DX</td>
           <td>QU</td>
           <td>QURK</td>
+          <td>DX</td>
           <td>1</td>
           <td>5</td>
         </tr>
@@ -612,4 +606,3 @@
 </div>
 </body>
 </html>
-
